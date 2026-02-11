@@ -1,0 +1,201 @@
+<svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for allowed meteor trails (white) -->
+    <linearGradient id="allowedTrail1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0" />
+      <stop offset="30%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="70%" style="stop-color:#ffffff;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="allowedTrail2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0" />
+      <stop offset="30%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="70%" style="stop-color:#ffffff;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="allowedTrail3" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0" />
+      <stop offset="30%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="70%" style="stop-color:#ffffff;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradient for blocked meteor trails (red) -->
+    <linearGradient id="blockedTrail1" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F87171;stop-opacity:0" />
+      <stop offset="30%" style="stop-color:#EF4444;stop-opacity:0.3" />
+      <stop offset="70%" style="stop-color:#EF4444;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#DC2626;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="blockedTrail2" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#F87171;stop-opacity:0" />
+      <stop offset="30%" style="stop-color:#EF4444;stop-opacity:0.3" />
+      <stop offset="70%" style="stop-color:#EF4444;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#DC2626;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="blockedTrail3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F87171;stop-opacity:0" />
+      <stop offset="30%" style="stop-color:#EF4444;stop-opacity:0.3" />
+      <stop offset="70%" style="stop-color:#EF4444;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#DC2626;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Soft glow for earth -->
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Strong glow for blocked meteors -->
+    <filter id="strongGlow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="600" fill="none"/>
+  
+  <!-- 3D Wireframe Earth -->
+  <g id="earth" transform="translate(300, 300)">
+    
+    <!-- Outer atmosphere glow -->
+    <circle cx="0" cy="0" r="165" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.08"/>
+    <circle cx="0" cy="0" r="158" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.12"/>
+    
+    <!-- Main sphere outline -->
+    <circle cx="0" cy="0" r="150" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.7" filter="url(#softGlow)"/>
+    
+    <!-- Latitude lines -->
+    <ellipse cx="0" cy="-112" rx="50" ry="10" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.4"/>
+    <ellipse cx="0" cy="-75" rx="100" ry="20" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.45"/>
+    <ellipse cx="0" cy="-37" rx="135" ry="28" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+    
+    <!-- Equator (brightest) -->
+    <ellipse cx="0" cy="0" rx="150" ry="32" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.65"/>
+    
+    <!-- Bottom hemisphere -->
+    <ellipse cx="0" cy="37" rx="135" ry="28" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+    <ellipse cx="0" cy="75" rx="100" ry="20" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.45"/>
+    <ellipse cx="0" cy="112" rx="50" ry="10" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.4"/>
+    
+    <!-- Longitude lines -->
+    <ellipse cx="0" cy="0" rx="30" ry="150" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.65"/>
+    <ellipse cx="0" cy="0" rx="60" ry="150" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.5"/>
+    <ellipse cx="0" cy="0" rx="90" ry="150" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.45"/>
+    <ellipse cx="0" cy="0" rx="120" ry="150" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.4"/>
+    
+    <!-- Back meridian -->
+    <line x1="0" y1="-150" x2="0" y2="150" stroke="#ffffff" stroke-width="1.2" opacity="0.6"/>
+    
+    <!-- Diagonal meridians -->
+    <g transform="rotate(60)">
+      <ellipse cx="0" cy="0" rx="30" ry="150" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.35"/>
+      <ellipse cx="0" cy="0" rx="90" ry="150" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.3"/>
+    </g>
+    <g transform="rotate(-60)">
+      <ellipse cx="0" cy="0" rx="30" ry="150" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.35"/>
+      <ellipse cx="0" cy="0" rx="90" ry="150" fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.3"/>
+    </g>
+  </g>
+  
+  <!-- ALLOWED METEORS (passing through - white) -->
+  
+  <!-- Allowed Meteor 1 - Top Right -->
+  <g id="allowedMeteor1">
+    <circle cx="370" cy="180" r="5" fill="#ffffff" filter="url(#glow)"/>
+    <circle cx="370" cy="180" r="2.5" fill="#ffffff" opacity="1"/>
+  </g>
+  
+  <!-- Allowed Meteor 2 - Bottom -->
+  <g id="allowedMeteor2">
+    <circle cx="288" cy="425" r="5" fill="#ffffff" filter="url(#glow)"/>
+    <circle cx="288" cy="425" r="2.5" fill="#ffffff" opacity="1"/>
+  </g>
+  
+  <!-- Allowed Meteor 3 - Top -->
+  <g id="allowedMeteor3">
+    <circle cx="308" cy="165" r="5" fill="#ffffff" filter="url(#glow)"/>
+    <circle cx="308" cy="165" r="2.5" fill="#ffffff" opacity="1"/>
+  </g>
+  
+  <!-- Allowed Meteor 4 - Left -->
+  <g id="allowedMeteor4">
+    <circle cx="180" cy="280" r="5" fill="#ffffff" filter="url(#glow)"/>
+    <circle cx="180" cy="280" r="2.5" fill="#ffffff" opacity="1"/>
+  </g>
+  
+  <!-- BLOCKED METEORS (stopped at barrier - red) -->
+  
+  <!-- Blocked Meteor 1 - Bottom Left -->
+  <g id="blockedMeteor1">
+    <line x1="130" y1="520" x2="225" y2="415" stroke="url(#blockedTrail1)" stroke-width="3.5" opacity="0.9" stroke-linecap="round" filter="url(#glow)"/>
+    <!-- Impact burst effect -->
+    <circle cx="225" cy="415" r="8" fill="none" stroke="#EF4444" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="225" cy="415" r="12" fill="none" stroke="#DC2626" stroke-width="1" opacity="0.3"/>
+    <circle cx="225" cy="415" r="5" fill="#DC2626" filter="url(#strongGlow)"/>
+    <circle cx="225" cy="415" r="2" fill="#FCA5A5" opacity="1"/>
+    <!-- X mark for blocked -->
+    <line x1="220" y1="410" x2="230" y2="420" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+    <line x1="230" y1="410" x2="220" y2="420" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+  </g>
+  
+  <!-- Blocked Meteor 2 - Right Bottom -->
+  <g id="blockedMeteor2">
+    <line x1="530" y1="450" x2="405" y2="355" stroke="url(#blockedTrail2)" stroke-width="3.5" opacity="0.9" stroke-linecap="round" filter="url(#glow)"/>
+    <!-- Impact burst effect -->
+    <circle cx="405" cy="355" r="8" fill="none" stroke="#EF4444" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="405" cy="355" r="12" fill="none" stroke="#DC2626" stroke-width="1" opacity="0.3"/>
+    <circle cx="405" cy="355" r="5" fill="#DC2626" filter="url(#strongGlow)"/>
+    <circle cx="405" cy="355" r="2" fill="#FCA5A5" opacity="1"/>
+    <!-- X mark for blocked -->
+    <line x1="400" y1="350" x2="410" y2="360" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+    <line x1="410" y1="350" x2="400" y2="360" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+  </g>
+  
+  <!-- Blocked Meteor 3 - Top Left -->
+  <g id="blockedMeteor3">
+    <line x1="110" y1="100" x2="205" y2="195" stroke="url(#blockedTrail3)" stroke-width="3.5" opacity="0.9" stroke-linecap="round" filter="url(#glow)"/>
+    <!-- Impact burst effect -->
+    <circle cx="205" cy="195" r="8" fill="none" stroke="#EF4444" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="205" cy="195" r="12" fill="none" stroke="#DC2626" stroke-width="1" opacity="0.3"/>
+    <circle cx="205" cy="195" r="5" fill="#DC2626" filter="url(#strongGlow)"/>
+    <circle cx="205" cy="195" r="2" fill="#FCA5A5" opacity="1"/>
+    <!-- X mark for blocked -->
+    <line x1="200" y1="190" x2="210" y2="200" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+    <line x1="210" y1="190" x2="200" y2="200" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+  </g>
+  
+  <!-- Blocked Meteor 4 - Right -->
+  <g id="blockedMeteor4">
+    <line x1="520" y1="305" x2="415" y2="302" stroke="url(#blockedTrail2)" stroke-width="3.5" opacity="0.9" stroke-linecap="round" filter="url(#glow)"/>
+    <!-- Impact burst effect -->
+    <circle cx="415" cy="302" r="8" fill="none" stroke="#EF4444" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="415" cy="302" r="12" fill="none" stroke="#DC2626" stroke-width="1" opacity="0.3"/>
+    <circle cx="415" cy="302" r="5" fill="#DC2626" filter="url(#strongGlow)"/>
+    <circle cx="415" cy="302" r="2" fill="#FCA5A5" opacity="1"/>
+    <!-- X mark for blocked -->
+    <line x1="410" y1="297" x2="420" y2="307" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+    <line x1="420" y1="297" x2="410" y2="307" stroke="#ffffff" stroke-width="1.5" opacity="0.8"/>
+  </g>
+  
+</svg>

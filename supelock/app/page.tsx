@@ -54,14 +54,12 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Navbar scroll trigger
       const heroThreshold = window.innerHeight * 0.9;
       setIsScrolledPastHero(window.scrollY > heroThreshold);
 
-      // Scroll spy logic for car highlight
       if (!sectionRef.current) return;
 
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
 
       let foundIndex = 0;
       cardRefs.current.forEach((card, index) => {
@@ -84,7 +82,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#0b0f15] text-white">
-      {/* Navbar (unchanged) */}
+      {/* Navbar */}
       <nav
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out',
@@ -92,7 +90,7 @@ export default function Home() {
         )}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold">YourBrand</div>
+          <div className="text-2xl font-medium">Supelock</div>
 
           <div className="hidden md:flex items-center gap-10">
             <a href="#" className={cn('transition-colors', isScrolledPastHero ? 'text-white hover:text-gray-200' : 'text-white/90 hover:text-white')}>Features</a>
@@ -123,8 +121,9 @@ export default function Home() {
         )}
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6">
+      {/* Hero Section with transparent overlay image */}
+      <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        {/* Gradient */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -132,95 +131,194 @@ export default function Home() {
           }}
         />
 
+        {/* Transparent overlay image – full cover, behind content */}
+        <div
+          className="absolute inset-0 pointer-events-none z-[1]"
+          style={{
+            backgroundImage: `url('/images/blursupe.png')`, // ← replace with your actual path
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.15,
+            filter: 'blur(6px)',              // ← add this line (adjust px value)
+            backdropFilter: 'blur(58px)',           // ← add this line (adjust px value)
+            WebkitBackdropFilter: 'blur(58px)',
+            // adjust this value (0.1 to 0.5 recommended)
+          }}
+        />
+
+        {/* Main content */}
         <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg">Build something amazing</h1>
+          <h1 className="text-5xl md:text-7xl font-medium mb-6 ">
+            The Internet Passport layer for AI Agents
+          </h1>
           <p className="text-xl md:text-2xl text-gray-100 mb-10 drop-shadow-md">
-            The modern platform for creators, startups, and teams who want to ship fast and look good doing it.
+            The modern platform for creators, startups, and teams who want to ship fast
+            and look good doing it.
           </p>
+
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button size="lg" className="bg-white text-[#305eff] hover:bg-gray-100 text-lg px-10 shadow-lg">Start for free</Button>
-            <Button size="lg" variant="outline" className="text-lg border-white/70 text-white hover:bg-white/10 hover:text-white px-10 shadow-md">Watch demo</Button>
+            <Button
+              size="lg"
+              className="bg-white text-[#305eff] hover:bg-gray-100 text-lg px-10 shadow-lg"
+            >
+              Start for free
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg border-white/70 text-white hover:bg-white/10 hover:text-white px-10 shadow-md"
+            >
+              Watch demo
+            </Button>
           </div>
-          <p className="mt-8 text-gray-200 drop-shadow-sm">No credit card required • 14-day free trial</p>
+
+          <p className="mt-8 text-gray-200 drop-shadow-sm">
+            Pay as much as you use • Generous free limits • Open-Source SDK
+          </p>
         </div>
       </section>
 
-      {/* Why people love us */}
+      {/* SVG, CLI Card, and Text Section */}
       <section className="py-32 px-6 bg-[#0b0f15]">
-        <h2 className="text-4xl font-bold text-center mb-16">Why people love us</h2>
-        <div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-          {/* ... your existing cards ... */}
-          <div className="text-center p-8 bg-gray-900/40 rounded-xl border border-gray-800">
-            <h3 className="text-2xl font-semibold mb-4 text-blue-400">Fast</h3>
-            <p className="text-gray-300">Ship your product in days, not months.</p>
-          </div>
-          <div className="text-center p-8 bg-gray-900/40 rounded-xl border border-gray-800">
-            <h3 className="text-2xl font-semibold mb-4 text-blue-400">Beautiful</h3>
-            <p className="text-gray-300">Looks professional without any design effort.</p>
-          </div>
-          <div className="text-center p-8 bg-gray-900/40 rounded-xl border border-gray-800">
-            <h3 className="text-2xl font-semibold mb-4 text-blue-400">Affordable</h3>
-            <p className="text-gray-300">Start free, scale when you grow.</p>
-          </div>
-        </div>
-      </section>
+        <div className="max-w-7xl mx-auto grid md:grid-cols-[7fr_3fr] gap-16 items-center">
+          {/* Left side: SVG with CLI card on top right */}
+          <div className="relative">
+            {/* SVG */}
+            <img src="/earth.svg" alt="Earth" className="w-full h-auto" />
 
-      {/* New: Scrolling Cards + Highlighted List Section */}
-      <section ref={sectionRef} className="py-24 px-6 bg-gradient-to-b from-[#0b0f15] to-[#0a0d14]">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">Explore the Legends</h2>
-
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-            {/* LEFT - Highlighted List */}
-            <div className="md:sticky md:top-24 h-fit">
-              <div className="space-y-6">
-                {carItems.map((car, index) => (
-                  <div
-                    key={car.id}
-                    className={cn(
-                      'p-5 rounded-xl cursor-pointer transition-all duration-300 border border-transparent',
-                      activeCarIndex === index
-                        ? 'bg-[#305eff]/20 border-[#305eff]/50 shadow-lg shadow-blue-900/30 scale-[1.03]'
-                        : 'bg-gray-900/30 hover:bg-gray-800/40'
-                    )}
-                  >
-                    <h3
-                      className={cn(
-                        'text-2xl font-semibold transition-colors',
-                        activeCarIndex === index ? 'text-[#60a5fa]' : 'text-gray-300'
-                      )}
-                    >
-                      {car.name}
-                    </h3>
-                    <p className="text-gray-500 mt-1">{car.year}</p>
-                  </div>
-                ))}
+            {/* CLI-like card on top right of SVG */}
+            <div className="absolute top-0 right-0 w-64 bg-gray-950 border border-gray-800 rounded-lg shadow-2xl overflow-hidden">
+              <div className="bg-gray-900 px-4 py-2 flex items-center gap-2 border-b border-gray-800">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                <span className="ml-2 text-xs text-gray-500">terminal</span>
+              </div>
+              <div className="p-4 font-mono text-xs space-y-2">
+                <div className="text-green-400">$ npx supelock init</div>
+                <div className="text-gray-400">✓ Installing dependencies...</div>
+                <div className="text-gray-400">✓ Setting up config...</div>
+                <div className="text-blue-400">✓ Ready to ship! 🚀</div>
               </div>
             </div>
+          </div>
 
-            {/* RIGHT - Scrolling Cards */}
-            <div className="space-y-10 md:space-y-16">
+          {/* Right side: Text content */}
+          <div className="space-y-8">
+            <h2 className="text-4xl md:text-3xl font-medium">Detect Intent of Agents before allowing them to perform a task in your website</h2>
+            <p className="text-xl text-gray-300 leading-relaxed">
+              Focus on what matters. Our platform handles the complexity so you can deliver 
+              amazing experiences without the headaches.
+            </p>
+            <div className="space-y-6">
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-medium mb-2">Lightning Fast</h3>
+                  <p className="text-gray-400">Deploy in minutes with our optimized infrastructure</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-medium mb-2">Secure by Default</h3>
+                  <p className="text-gray-400">Enterprise-grade security built into every layer</p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-medium mb-2">Developer First</h3>
+                  <p className="text-gray-400">Built by developers, for developers</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Scrolling Section */}
+      <section ref={sectionRef} className="py-20 px-6 bg-gradient-to-b from-[#0b0f15] to-[#0a0d14]">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-medium text-center mb-12 md:mb-16">Explore the Legends</h2>
+
+          {/* Desktop layout */}
+          <div className="hidden md:grid md:grid-cols-[1fr_4fr] lg:grid-cols-[1fr_5fr] gap-8 lg:gap-12">
+            {/* Left – simple list */}
+            <div className="md:sticky md:top-24 h-fit space-y-8 lg:space-y-10">
+              {carItems.map((car, index) => (
+                <div
+                  key={car.id}
+                  className={cn(
+                    'transition-all duration-300 cursor-default flex items-center gap-3',
+                    activeCarIndex === index ? 'text-white font-medium text-xl' : 'text-gray-500 text-lg'
+                  )}
+                >
+                  <div
+                    className={cn(
+                      'w-1.5 h-8 rounded-full transition-all',
+                      activeCarIndex === index ? 'bg-[#60a5fa]' : 'bg-transparent'
+                    )}
+                  />
+                  <span>{car.name}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Right – cards */}
+            <div className="space-y-12 lg:space-y-16">
               {carItems.map((car, index) => (
                 <div
                   key={car.id}
                   ref={(el) => (cardRefs.current[index] = el)}
-                  className="bg-gray-900/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-800 shadow-2xl transition-all duration-500 hover:shadow-blue-900/30"
+                  className="bg-gray-900/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-800/80 shadow-2xl transition-all duration-500 hover:shadow-blue-900/30 hover:border-gray-700"
                 >
-                  <div className="h-64 md:h-80 overflow-hidden">
+                  <div className="h-64 lg:h-[28rem] overflow-hidden">
                     <img
                       src={car.image}
                       alt={car.name}
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                     />
                   </div>
-                  <div className="p-8">
-                    <h3 className="text-3xl font-bold mb-3 text-white">{car.name}</h3>
-                    <p className="text-gray-400 mb-4">{car.year}</p>
-                    <p className="text-gray-300 leading-relaxed">{car.desc}</p>
+                  <div className="p-6 lg:p-10">
+                    <h3 className="text-2xl lg:text-3xl font-medium mb-3 text-white">{car.name}</h3>
+                    <p className="text-gray-400 mb-4 text-lg">{car.year}</p>
+                    <p className="text-gray-300 leading-relaxed text-base lg:text-lg">{car.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Mobile layout: heading above each card */}
+          <div className="md:hidden space-y-10">
+            {carItems.map((car) => (
+              <div key={car.id} className="space-y-4">
+                <h3 className="text-2xl font-medium text-white px-2">{car.name}</h3>
+                <div className="bg-gray-900/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-800/80 shadow-xl">
+                  <div className="h-64 overflow-hidden">
+                    <img src={car.image} alt={car.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="p-6">
+                    <p className="text-gray-400 mb-3 text-lg">{car.year}</p>
+                    <p className="text-gray-300 leading-relaxed">{car.desc}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
