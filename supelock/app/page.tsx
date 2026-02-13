@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { Card, Pill } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 
@@ -9,7 +10,7 @@ import { Menu, X } from 'lucide-react';
 const carItems = [
   {
     id: 1,
-    name: 'Porsche 911 Turbo S',
+    name: 'based Signing',
     year: '2024',
     desc: 'The ultimate sports car with 640 hp and mind-blowing acceleration.',
     image: 'https://images.unsplash.com/photo-1503736334956-4c4965f49072?auto=format&fit=crop&w=800&q=80',
@@ -93,9 +94,12 @@ export default function Home() {
           <div className="text-2xl font-medium">Supelock</div>
 
           <div className="hidden md:flex items-center gap-10">
-            <a href="#" className={cn('transition-colors', isScrolledPastHero ? 'text-white hover:text-gray-200' : 'text-white/90 hover:text-white')}>Features</a>
+            <a href="#" className={cn('transition-colors', isScrolledPastHero ? 'text-white hover:text-gray-200' : 'text-white/90 hover:text-white')}>Developers</a>
+            <a href="#" className={cn('transition-colors', isScrolledPastHero ? 'text-white hover:text-gray-200' : 'text-white/90 hover:text-white')}>Products</a>
+            <a href="#" className={cn('transition-colors', isScrolledPastHero ? 'text-white hover:text-gray-200' : 'text-white/90 hover:text-white')}>Documents</a>
             <a href="#" className={cn('transition-colors', isScrolledPastHero ? 'text-white hover:text-gray-200' : 'text-white/90 hover:text-white')}>Pricing</a>
-            <a href="#" className={cn('transition-colors', isScrolledPastHero ? 'text-white hover:text-gray-200' : 'text-white/90 hover:text-white')}>Docs</a>
+            <a href="#" className={cn('transition-colors', isScrolledPastHero ? 'text-white hover:text-gray-200' : 'text-white/90 hover:text-white')}>Blog</a>
+            <a href="#" className={cn('transition-colors', isScrolledPastHero ? 'text-white hover:text-gray-200' : 'text-white/90 hover:text-white')}>Company</a>
           </div>
 
           <div className="hidden md:flex items-center gap-4">
@@ -111,10 +115,12 @@ export default function Home() {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-[#305eff] border-t border-blue-400/30 py-6 px-6">
             <div className="flex flex-col gap-6 text-lg">
-              <a href="#" className="text-white hover:text-gray-200 transition-colors">Features</a>
+              <a href="#" className="text-white hover:text-gray-200 transition-colors">Products</a>
+              <a href="#" className="text-white hover:text-gray-200 transition-colors">Developers</a>
+               <a href="#" className="text-white hover:text-gray-200 transition-colors">Docs</a>
+              <a href="#" className="text-white hover:text-gray-200 transition-colors">Blog</a>
               <a href="#" className="text-white hover:text-gray-200 transition-colors">Pricing</a>
-              <a href="#" className="text-white hover:text-gray-200 transition-colors">Docs</a>
-              <a href="#" className="text-white hover:text-gray-200 transition-colors">Log in</a>
+               <a href="#" className="text-white hover:text-gray-200 transition-colors">API</a>
               <Button className="mt-4 bg-white text-[#305eff] hover:bg-gray-100 w-full py-6 text-lg font-medium">Get Started</Button>
             </div>
           </div>
@@ -135,15 +141,14 @@ export default function Home() {
         <div
           className="absolute inset-0 pointer-events-none z-[1]"
           style={{
-            backgroundImage: `url('/images/blursupe.png')`, // ← replace with your actual path
+            backgroundImage: `url('/images/blursupe.png')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             opacity: 0.15,
-            filter: 'blur(6px)',              // ← add this line (adjust px value)
-            backdropFilter: 'blur(58px)',           // ← add this line (adjust px value)
+            filter: 'blur(6px)',
+            backdropFilter: 'blur(58px)',
             WebkitBackdropFilter: 'blur(58px)',
-            // adjust this value (0.1 to 0.5 recommended)
           }}
         />
 
@@ -153,29 +158,40 @@ export default function Home() {
             The Internet Passport layer for AI Agents
           </h1>
           <p className="text-xl md:text-2xl text-gray-100 mb-10 drop-shadow-md">
-            The modern platform for creators, startups, and teams who want to ship fast
-            and look good doing it.
+            Agent moderation for websites. Detect and prevent harmful actions before they happen, so you can focus on building your amazing products.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button
               size="lg"
-              className="bg-white text-[#305eff] hover:bg-gray-100 text-lg px-10 shadow-lg"
+              variant="rzpy"
+              className="text-lg px-10"
             >
               Start for free
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="text-lg border-white/70 text-white hover:bg-white/10 hover:text-white px-10 shadow-md"
+              className="text-lg border-white/70 text-white hover:bg-white/10 hover:text-white px-10"
             >
-              Watch demo
+              Connect with us
             </Button>
           </div>
 
-          <p className="mt-8 text-gray-200 drop-shadow-sm">
-            Pay as much as you use • Generous free limits • Open-Source SDK
-          </p>
+          {/* Pill cards with features */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <Pill variant="transparent" size="sm">
+              Pay as much as you use
+            </Pill>
+            <span className="text-gray-400">•</span>
+            <Pill variant="transparent" size="sm">
+              Generous free limits
+            </Pill>
+            <span className="text-gray-400">•</span>
+            <Pill variant="transparent" size="sm">
+              Open-Source SDK
+            </Pill>
+          </div>
         </div>
       </section>
 
@@ -188,18 +204,13 @@ export default function Home() {
             <img src="/earth.svg" alt="Earth" className="w-full h-auto" />
 
             {/* CLI-like card on top right of SVG */}
-            <div className="absolute top-0 right-0 w-64 bg-gray-950 border border-gray-800 rounded-lg shadow-2xl overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 bg-gray-950 border border-gray-800 rounded-lg overflow-hidden">
               <div className="bg-gray-900 px-4 py-2 flex items-center gap-2 border-b border-gray-800">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <span className="ml-2 text-xs text-gray-500">terminal</span>
+                
+                <span className="ml-2 text-xs text-gray-500">JSON</span>
               </div>
               <div className="p-4 font-mono text-xs space-y-2">
-                <div className="text-green-400">$ npx supelock init</div>
-                <div className="text-gray-400">✓ Installing dependencies...</div>
-                <div className="text-gray-400">✓ Setting up config...</div>
-                <div className="text-blue-400">✓ Ready to ship! 🚀</div>
+                <div className="text-green">   trust_level': 'high', 'payload': 'actor_id': 'didle-agent', 'exp': 1770759503, 'iat': 1770759443, 'intent': 'action': 'create_order', 'method': 'POST', 'nonce': 'd21d29ee-e971-429d-9ec8-230349cdf840', 'path': '/orders', 'v': 1</div>
               </div>
             </div>
           </div>
@@ -213,33 +224,21 @@ export default function Home() {
             </p>
             <div className="space-y-6">
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
+               
                 <div>
                   <h3 className="text-xl font-medium mb-2">Lightning Fast</h3>
                   <p className="text-gray-400">Deploy in minutes with our optimized infrastructure</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                </div>
+                
                 <div>
                   <h3 className="text-xl font-medium mb-2">Secure by Default</h3>
                   <p className="text-gray-400">Enterprise-grade security built into every layer</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                  </svg>
-                </div>
+                
                 <div>
                   <h3 className="text-xl font-medium mb-2">Developer First</h3>
                   <p className="text-gray-400">Built by developers, for developers</p>
@@ -278,13 +277,15 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Right – cards */}
+            {/* Right – cards with elevated variant */}
             <div className="space-y-12 lg:space-y-16">
               {carItems.map((car, index) => (
-                <div
+                <Card
                   key={car.id}
                   ref={(el) => (cardRefs.current[index] = el)}
-                  className="bg-gray-900/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-800/80 shadow-2xl transition-all duration-500 hover:shadow-blue-900/30 hover:border-gray-700"
+                  variant="elevated"
+                  size="default"
+                  className="overflow-hidden transition-all duration-500 hover:shadow-blue-900/50"
                 >
                   <div className="h-64 lg:h-[28rem] overflow-hidden">
                     <img
@@ -298,7 +299,7 @@ export default function Home() {
                     <p className="text-gray-400 mb-4 text-lg">{car.year}</p>
                     <p className="text-gray-300 leading-relaxed text-base lg:text-lg">{car.desc}</p>
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
           </div>
@@ -308,7 +309,7 @@ export default function Home() {
             {carItems.map((car) => (
               <div key={car.id} className="space-y-4">
                 <h3 className="text-2xl font-medium text-white px-2">{car.name}</h3>
-                <div className="bg-gray-900/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-800/80 shadow-xl">
+                <Card variant="elevated" size="default" className="overflow-hidden">
                   <div className="h-64 overflow-hidden">
                     <img src={car.image} alt={car.name} className="w-full h-full object-cover" />
                   </div>
@@ -316,7 +317,7 @@ export default function Home() {
                     <p className="text-gray-400 mb-3 text-lg">{car.year}</p>
                     <p className="text-gray-300 leading-relaxed">{car.desc}</p>
                   </div>
-                </div>
+                </Card>
               </div>
             ))}
           </div>
