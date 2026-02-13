@@ -1,9 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 
 export default function Hero() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#121212] text-white selection:bg-blue-500/30 font-sans relative overflow-hidden">
       
@@ -17,8 +23,12 @@ export default function Hero() {
         }}
       />
 
-      {/* 2. The "Rising Sun" Glow - Expanded for a natural spread */}
-      <div className="absolute top-1/2 -translate-y-1/2 -right-[15%] w-[60%] h-[80%] z-10 pointer-events-none overflow-visible">
+      {/* 2. The "Rising Sun" Glow - Animated Wrapper */}
+      <div 
+        className={`absolute top-1/2 -translate-y-1/2 z-10 pointer-events-none overflow-visible transition-all duration-[3000ms] ease-out 
+          ${mounted ? 'right-[-15%] opacity-100 scale-100' : 'right-[-40%] opacity-0 scale-90'}`}
+        style={{ width: '60%', height: '80%' }}
+      >
         
         {/* Deep Atmospheric Wash - Spreads very far */}
         <div 
@@ -33,7 +43,7 @@ export default function Hero() {
         <div 
           className="absolute inset-0 opacity-50 mix-blend-screen"
           style={{
-            background: 'radial-gradient(ellipse at 100% 50%, #606DFA 0%, transparent 60%)',
+            background: 'radial-gradient(ellipse at 100% 50%, #3344FB 0%, transparent 0%)',
             filter: 'blur(100px)',
           }}
         />
@@ -42,7 +52,7 @@ export default function Hero() {
         <div 
           className="absolute inset-0 opacity-90 mix-blend-screen"
           style={{
-            background: 'radial-gradient(ellipse at 100% 50%, #606DFA 0%, #0C10F0 20%, transparent 50%)',
+            background: 'radial-gradient(ellipse at 100% 50%, #606DFA 0%, #0C10F0 20%, transparent 45%)',
             filter: 'blur(70px)',
           }}
         />
@@ -53,7 +63,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-40 z-20 bg-gradient-to-t from-[#121212] to-transparent pointer-events-none" />
 
       {/* Navbar */}
-      <nav className="absolute top-0 w-full z-50">
+      <nav className={`absolute top-0 w-full z-50 transition-opacity duration-1000 delay-700 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
           <div className="flex items-center gap-10">
             <span className="text-xl font-light tracking-tighter">supelock</span>
@@ -76,7 +86,7 @@ export default function Hero() {
       </nav>
 
       {/* Hero Content */}
-      <section className="relative min-h-screen flex flex-col justify-end pb-12 md:pb-24 z-30">
+      <section className={`relative min-h-screen flex flex-col justify-end pb-12 md:pb-24 z-30 transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-end">
             
@@ -106,13 +116,13 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Right Side - Diagram Area with Matching Pulsing Glow */}
+            {/* Right Side - Diagram Area */}
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-[300px] md:max-w-md aspect-square lg:mb-[-20px]">
                 
-                {/* Updated Pulsing Glow to match your Blue/Purple palette */}
+                {/* Pulsing Glow behind diagram */}
                 <div 
-                  className="w-full h-full rounded-full bg-[#606DFA]/20 blur-[120px] absolute inset-0 animate-pulse" 
+                  className="w-full h-full rounded-full bg-[#1D2FF6]/20 blur-[120px] absolute inset-0 animate-pulse" 
                   style={{ animationDuration: '4s' }}
                 />
 
