@@ -127,7 +127,7 @@ export default function Hero() {
                 />
 
                 <img 
-                  src="/software-diagram.svg" 
+                  src="/images/botpassport.png" 
                   alt="Architecture Diagram" 
                   className="relative z-10 w-full h-auto drop-shadow-2xl"
                 />
