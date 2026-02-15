@@ -1,10 +1,10 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === "production";
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  output: 'export',
-  basePath: '/splock-web',
-  assetPrefix: '/splock-web/',
+const nextConfig = {
+  output: "export",
+  basePath: isProd ? "/splock-web" : "",
+  assetPrefix: isProd ? "/splock-web/" : ""
 };
 
-export default nextConfig;
+module.exports = nextConfig;

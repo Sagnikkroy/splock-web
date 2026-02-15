@@ -41,6 +41,23 @@ const cardVariants = cva(
           "hover:shadow-blue-900/30",
           "hover:border-gray-700"
         ].join(" "),
+
+        // Real card with subtle gradient border and depth
+        realcard: [
+          "bg-[rgb(24,27,32)]",
+          "rounded-[28px]",
+          "before:absolute before:inset-0",
+          "before:rounded-[28px]",
+          "before:p-[1.5px]",
+          "before:bg-gradient-to-br before:from-white/15 before:via-white/5 before:to-transparent",
+          "before:-z-10",
+          "after:absolute after:inset-[1.5px]",
+          "after:rounded-[26.5px]",
+          "after:bg-[rgb(18,21,25)]",
+          "after:shadow-[inset_-6px_-10px_14px_0px_rgba(0,0,0,0.2),inset_5px_5px_6px_0px_rgba(255,255,255,0.04)]",
+          "after:-z-[1]",
+          "hover:before:from-white/20 hover:before:via-white/8"
+        ].join(" "),
       },
       size: {
         default: "p-6",
@@ -57,7 +74,7 @@ const cardVariants = cva(
 )
 
 const pillVariants = cva(
-  "inline-flex items-center justify-center rounded-full font-bold tracking-tight",
+  "inline-flex items-center justify-center rounded-full transition-all font-bold tracking-tight",
   {
     variants: {
       variant: {
@@ -65,7 +82,6 @@ const pillVariants = cva(
           "bg-transparent",
           "border border-white/10",
           "text-white",
-          "transition-all",
           "hover:border-white/20"
         ].join(" "),
         
