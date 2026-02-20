@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <!-- Note: The background `<rect>` has been removed to make the SVG transparent. 
+       The boxes use a solid black fill (`#000000`) so they still hide the paths passing behind them 
+       and maintain the 3D isometric illusion perfectly when placed on a dark background. -->
+
+  <defs>
+    <!-- Arrowhead marker for flow direction mapped to the middle of the paths -->
+    <marker id="arrow" viewBox="0 0 0 0" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 2 2 L 8 5 L 2 8" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- 1. GITHUB REPO BOX (Drawn furthest back)   -->
+  <!-- ========================================== -->
+  <g transform="translate(400, 100)">
+    <!-- Top Face -->
+    <polygon points="0,-60 51.96,-30 0,0 -51.96,-30" fill="#00000000" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    <!-- Left Face -->
+    <polygon points="0,0 -51.96,-30 -51.96,30 0,60" fill="#00000000" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    <!-- Right Face -->
+    <polygon points="0,0 51.96,-30 51.96,30 0,60" fill="#00000000" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    
+    <!-- Isometric Top Face Content (GitHub Icon + Label) -->
+    <g transform="translate(0, -60) matrix(0.866, 0.5, -0.866, 0.5, 0, 0)">
+      <!-- GitHub Icon -->
+      <g transform="translate(30, 20) scale(1.1) translate(-12, -12)">
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="white"/>
+      </g>
+      <!-- Label -->
+      <text x="30" y="46" fill="white" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle" dominant-baseline="middle">repo</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- 2. PATHS STARTING/ENDING AT REPO BOX       -->
+  <!-- ========================================== -->
+
+  <!-- Path 1: Repo -> Sandbox (Starts on top of Repo's Right face, ends behind Sandbox) -->
+  <path d="M 425.98 115 L 542.89 182.5 L 659.8 250" fill="none" stroke="white" stroke-width="1.5" stroke-dasharray="8,6" marker-mid="url(#arrow)">
+    <animate attributeName="stroke-dashoffset" from="14" to="0" dur="1.5s" repeatCount="indefinite" />
+  </path>
+  <circle cx="425.98" cy="115" r="3" fill="white" />
+
+  <!-- Path 4: Find Vulnerabilities -> Repo (Starts behind Find Vuln, ends on top of Repo's Left face) -->
+  <path d="M 140.2 250 L 257.11 182.5 L 374.02 115" fill="none" stroke="white" stroke-width="1.5" stroke-dasharray="8,6" marker-mid="url(#arrow)">
+    <animate attributeName="stroke-dashoffset" from="14" to="0" dur="1.5s" repeatCount="indefinite" />
+  </path>
+  <circle cx="374.02" cy="115" r="3" fill="white" />
+
+  <!-- ========================================== -->
+  <!-- 3. FIND VULNERABILITIES BOX                -->
+  <!-- ========================================== -->
+  <g transform="translate(140.2, 250)">
+    <polygon points="0,-60 51.96,-30 0,0 -51.96,-30" fill="#00000000" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="0,0 -51.96,-30 -51.96,30 0,60" fill="#00000000" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="0,0 51.96,-30 51.96,30 0,60" fill="#00000000" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    
+    <g transform="translate(0, -60) matrix(0.866, 0.5, -0.866, 0.5, 0, 0)">
+      <text x="30" y="21" fill="white" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle" dominant-baseline="middle">find</text>
+      <text x="30" y="39" fill="white" font-family="monospace" font-size="5.5" font-weight="bold" text-anchor="middle" dominant-baseline="middle">vulnerabilities</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- 4. PATH 3: REWRITER -> FIND VULNERABILITIES-->
+  <!-- ========================================== -->
+  <!-- Starts behind Rewriter, ends on top of Find Vuln's Right face -->
+  <path d="M 400 400 L 283.09 332.5 L 166.18 265" fill="none" stroke="white" stroke-width="1.5" stroke-dasharray="8,6" marker-mid="url(#arrow)">
+    <animate attributeName="stroke-dashoffset" from="14" to="0" dur="1.5s" repeatCount="indefinite" />
+  </path>
+  <circle cx="166.18" cy="265" r="3" fill="white" />
+
+  <!-- ========================================== -->
+  <!-- 5. SANDBOX BOX                             -->
+  <!-- ========================================== -->
+  <g transform="translate(659.8, 250)">
+    <polygon points="0,-60 51.96,-30 0,0 -51.96,-30" fill="#00000000" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="0,0 -51.96,-30 -51.96,30 0,60" fill="#00000000" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="0,0 51.96,-30 51.96,30 0,60" fill="#00000000" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    
+    <g transform="translate(0, -60) matrix(0.866, 0.5, -0.866, 0.5, 0, 0)">
+      <text x="30" y="30" fill="white" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle" dominant-baseline="middle">sandbox</text>
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- 6. PATH 2: SANDBOX -> REWRITER             -->
+  <!-- ========================================== -->
+  <!-- Starts on top of Sandbox's Left face, ends behind Rewriter -->
+  <path d="M 633.82 265 L 516.91 332.5 L 400 400" fill="none" stroke="white" stroke-width="1.5" stroke-dasharray="8,6" marker-mid="url(#arrow)">
+    <animate attributeName="stroke-dashoffset" from="14" to="0" dur="1.5s" repeatCount="indefinite" />
+  </path>
+  <circle cx="633.82" cy="265" r="3" fill="white" />
+
+  <!-- ========================================== -->
+  <!-- 7. REWRITER BOX (Drawn closest/front)      -->
+  <!-- ========================================== -->
+  <g transform="translate(400, 400)">
+    <polygon points="0,-60 51.96,-30 0,0 -51.96,-30" fill="#00000000" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="0,0 -51.96,-30 -51.96,30 0,60" fill="#00000000" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    <polygon points="0,0 51.96,-30 51.96,30 0,60" fill="#00000000" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    
+    <g transform="translate(0, -60) matrix(0.866, 0.5, -0.866, 0.5, 0, 0)">
+      <text x="30" y="30" fill="white" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle" dominant-baseline="middle">rewriter</text>
+    </g>
+  </g>
+
+</svg>

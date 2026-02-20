@@ -82,7 +82,7 @@ export default function Home() {
             <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
               <div className="relative w-full max-w-[300px] md:max-w-md aspect-square lg:mb-[-20px]">
                 <div className="w-full h-full rounded-full bg-[#606DFA]/20 blur-[120px] absolute inset-0 animate-pulse" style={{ animationDuration: '4s' }} />
-                <img src="/images/botpassport.png" alt="Architecture Diagram" className="relative z-10 w-full h-auto drop-shadow-2xl" />
+                <img src="/opart.svg" alt="Architecture Diagram" className="relative z-10 w-full h-auto drop-shadow-2xl" />
               </div>
             </div>
           </div>
